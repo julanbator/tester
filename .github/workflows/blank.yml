@@ -1,0 +1,21 @@
+name: CI
+
+on: push
+
+jobs:
+  build:
+
+          #runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: build
+      run: bash build.sh
+
+    - name: Archive  binary
+      uses: actions/upload-artifact@v1
+      with:
+        name: cartogram
+        #~ path: workspace/bin/ffmpeg
+        path: go_cart/cartogram
